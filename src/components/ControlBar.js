@@ -18,29 +18,7 @@ export default class ControlBar extends Component {
 
     render() {
         return (
-            <div>
-                <TextField 
-                    onChange={ event => this.onAccountChange( event.target.value) }
-                />
-                <TextField 
-                    onChange={ event => this.onNicknameChange( event.target.value) }
-                />
-                <Button onClick={() => this.joinGame()}
-                    variant="raised" 
-                >
-                    Join game
-                </Button>
 
-                <TextField onChange={ event =>  this.onBetChange( event.target.value) }
-                />
-
-                <Button 
-                    onClick={() => this.makeBet()}
-                    variant="raised" 
-                >
-                    Make bet
-                </Button>
-            </div>
         );
     }
 
@@ -52,7 +30,6 @@ export default class ControlBar extends Component {
         }).catch((error) => {
             alert(error)
         })
-
     }
 
     joinGame() {

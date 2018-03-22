@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-contract Dice {
+contract EthereumDice {
 
     uint constant _game_barier = 600;
     uint constant _game_max = 1000;
@@ -51,7 +51,7 @@ contract Dice {
     function bet() public payable returns(bool) {
         address p_addr = msg.sender;
         uint random_number = uint(block.blockhash(block.number-1))%1000;
-        
+        _games_count++;
         if (random_number > _game_barier) {
             _players[p_addr].win_count += 1;
             _players[p_addr].total_count += 1;
@@ -61,7 +61,6 @@ contract Dice {
             //  Fires event that player no win =(
             return false;
         }
-        _games_count++;
     }
 
     function getWinningGames() public constant returns(uint) {
